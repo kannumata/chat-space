@@ -79,12 +79,12 @@
     float: left;
     height: 50px;
     padding-right: 10px;
-    &__image{
+    &__image {
       font-size: 20px;
-      line-height:
+      line-height: 50px;
     }
     .hidden{
-      display: none; #これはなぜ必要？
+      display: none;
     }
   }
   &__submit{
