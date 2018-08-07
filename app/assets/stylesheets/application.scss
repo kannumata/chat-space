@@ -1,5 +1,8 @@
-@import "config/reset";
-@import "config/color";
-@import "config/font-size";
-@import "modules/chat";
-@import "modules/side_bar"
+@import "config/reset.scss";
+@import "config/color.scss";
+@import "config/font-size.scss";
+@import "modules/chat.scss";
+@import "modules/side_bar.scss";
+@import "mixins/mixin.scss";
+@import "mixins/vendor_prefix.scss";
+@import "messages/messages.scss"
