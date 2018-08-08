@@ -7,12 +7,12 @@
     .left-header {
       float: left;
       &__title {
-        color: #333333;
+        color: #333;
         font-size: 20px;
         margin-top: 35px;
       }
       &__members {
-        color: #999999;
+        color: #999;
         display: flex;
         font-size: 12px;
         margin-top: 15px;
@@ -33,34 +33,7 @@
     }
   }
 
-  .messages {
-    background-color: #FAFAFA;
-    box-sizing: border-box;
-    padding: 46px 40px 0;
-    height: calc(100% - 100px - 90px);
-    .message {
-      .upper-message {
-        display: flex;
-        &__user-name {
-          color: #434a54;
-          font-size: 16px;
-          font-weight: bold;
-        }
-        &__date {
-          color: #999;
-          font-size: 12px;
-          padding-left: 10px;
-        }
-      }
-      .lower-message {
-        margin-top: 10px;
-        &__content {
-          color: #434a54;
-          font-size: 14px;
-          margin-bottom: 40px;
-        }
-      }
-    }
+
   }
 
   .form {
@@ -98,4 +71,4 @@
       padding: 0 30px;
     }
   }
-}
+
