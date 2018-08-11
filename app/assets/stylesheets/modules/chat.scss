@@ -50,17 +50,17 @@
       float: left;
       height: 50px;
       width: calc(100% - 150px);
+      position: relative;
     }
     &__mask {
-      background-color: $white;
       float: left;
       height: 50px;
-
+      padding-right: 10px;
+      position: absolute;
+      right: 200px;
       &__image {
         font-size: 20px;
         line-height: 50px;
-        position: absolute;
-        padding-left: 15px;
       }
       .hidden {
         display: none;
