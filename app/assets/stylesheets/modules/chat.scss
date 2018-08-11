@@ -12,7 +12,7 @@
         margin-top: 35px;
       }
       &__members {
-        color: #999;
+        color: $gray;
         display: flex;
         font-size: 12px;
         margin-top: 15px;
@@ -55,10 +55,12 @@
       background-color: $white;
       float: left;
       height: 50px;
-      padding-right: 10px;
+
       &__image {
         font-size: 20px;
         line-height: 50px;
+        position: absolute;
+        padding-left: 15px;
       }
       .hidden {
         display: none;
