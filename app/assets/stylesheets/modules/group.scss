@@ -1,3 +1,17 @@
+.group {
+  box-sizing: border-box;
+  padding: 20px 0 40px;
+  &__name {
+    margin-top: 20px;
+    color: $white;
+    font-size: $side_group_name;
+  }
+  &__message {
+    color: $white;
+    font-size: $side_group_message;
+    margin-top: 5px;
+  }
+}
 .chat-group-form {
   width: 980px;
   margin: 60px auto;
