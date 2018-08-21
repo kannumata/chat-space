@@ -1,9 +1,11 @@
 .message
   .upper-message
     .upper-message__user-name
-      メンバー
+      = message.user.name
     .upper-message__date
-      2018/08/08
+      = message.created_at.strftime('%Y/%m/%d %H:%M')
   .lower-meesage
-    .lower-message__content
-      メッセージ
+    - if message.body.present?
+      %p.lower-message__content
+        = message.body
+    = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
