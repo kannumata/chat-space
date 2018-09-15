@@ -1,12 +1,12 @@
 $(function(){
-  function buildHTML(data){
-    var Image = '';
+  function buildHTML(message){
+    var Image = "";
 
-    if (massage.image) {
-      Image = `<img src = ${message.image} class = "lower-message__image">`
-    }
+    if ( Image ){
+      Image = `<img src = ${ Image }, class="lower-message__image">`
+    };
 
-    var html = `<div class="message" data-message-id=${ message.id }>
+    var html = `<div class="message">
                   <div class="upper-message">
                     <div class="upper-message__user-name">
                       ${ message.name }
@@ -16,17 +16,19 @@ $(function(){
                     </div>
                   </div>
                   <div class="lower-meesage">
-                      <p class="lower-message__content">
-                        ${ message.text }
-                      </p>
-                        $ { Image }
+                    <p class="lower-message__content">
+                      ${ message.text }
+                    </p>
+                      ${ Image }
                   </div>
                 </div>`;
-      return html;
-    }
-  $(".form_message").on('submit', function(e){
+    return html;
+  }
+
+  $("#new_message").on("submit", function(e){
     e.preventDefault();
-    var formData = new FormData($(this);
+    var formData = new FormData(this);
+    var url = $(this).attr("action");
     $.ajax({
       type: "POST",
       url: url,
@@ -34,13 +36,16 @@ $(function(){
       dataType: "json",
       processData: false,
       contentType: false
-    });
-    .done(function(data) {
+    })
+    .done(function(data){
       var html = buildHTML(data);
-      $('.message').append(html);
+      $(".messages").append(html);
+      $('#new_message')[0].reset();
+      $(".messages").animate({scrollTop: $(".messages")[0].scrollHeight,
+      });
     })
     .fail(function(){
-      alert('error');
+      alert("error");
     });
   });
 });
