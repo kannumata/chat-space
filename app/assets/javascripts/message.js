@@ -3,7 +3,7 @@ $(function(){
     var Image = "";
 
     if ( message.image ){
-      Image = `<img src = ${ message.image }, class="lower-message__image">`
+      Image = `<img src = "${ message.image }", class="lower-message__image">`
     };
 
     if ( message.image != null){
@@ -20,7 +20,7 @@ $(function(){
                       <p class="lower-message__content">
                         ${ message.text }
                       </p>
-                        ${ Image }
+                      ${ Image }
                     </div>
                   </div>`;
     }else{
