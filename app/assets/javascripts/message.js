@@ -6,7 +6,6 @@ $(function(){
       Image = `<img src = "${ message.image }", class="lower-message__image">`
     };
 
-    if ( message.image != null){
       var html = `<div class="message">
                     <div class="upper-message">
                       <div class="upper-message__user-name">
@@ -23,24 +22,6 @@ $(function(){
                       ${ Image }
                     </div>
                   </div>`;
-    }else{
-      var html = `<div class="message">
-              <div class="upper-message">
-                <div class="upper-message__user-name">
-                  ${ message.name }
-                </div>
-                <div class="upper-message__date">
-                  ${ message.data }
-                </div>
-              </div>
-              <div class="lower-meesage">
-                <p class="lower-message__content">
-                  ${ message.text }
-                </p>
-              </div>
-            </div>`;
-    }
-
     return html;
   }
 
