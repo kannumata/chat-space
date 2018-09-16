@@ -3,7 +3,7 @@ $(function(){
     var Image = "";
 
     if ( Image ){
-      Image = `<img src = ${ Image }, class="lower-message__image">`
+      Image = `<img src = ${ message.image }, class="lower-message__image">`
     };
 
     var html = `<div class="message">
@@ -41,7 +41,7 @@ $(function(){
       var html = buildHTML(data);
       $(".messages").append(html);
       $('#new_message')[0].reset();
-      $(".messages").animate({scrollTop: $(".messages")[0].scrollHeight,
+      $(".messages").animate({scrollTop: $(".messages")[0].scrollHeight
       });
     })
     .fail(function(){
