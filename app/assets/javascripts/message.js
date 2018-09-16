@@ -2,26 +2,45 @@ $(function(){
   function buildHTML(message){
     var Image = "";
 
-    if ( Image ){
+    if ( message.image ){
       Image = `<img src = ${ message.image }, class="lower-message__image">`
     };
 
-    var html = `<div class="message">
-                  <div class="upper-message">
-                    <div class="upper-message__user-name">
-                      ${ message.name }
+    if ( message.image != null){
+      var html = `<div class="message">
+                    <div class="upper-message">
+                      <div class="upper-message__user-name">
+                        ${ message.name }
+                      </div>
+                      <div class="upper-message__date">
+                        ${ message.data }
+                      </div>
                     </div>
-                    <div class="upper-message__date">
-                      ${ message.data }
+                    <div class="lower-meesage">
+                      <p class="lower-message__content">
+                        ${ message.text }
+                      </p>
+                        ${ Image }
                     </div>
-                  </div>
-                  <div class="lower-meesage">
-                    <p class="lower-message__content">
-                      ${ message.text }
-                    </p>
-                      ${ Image }
-                  </div>
-                </div>`;
+                  </div>`;
+    }else{
+      var html = `<div class="message">
+              <div class="upper-message">
+                <div class="upper-message__user-name">
+                  ${ message.name }
+                </div>
+                <div class="upper-message__date">
+                  ${ message.data }
+                </div>
+              </div>
+              <div class="lower-meesage">
+                <p class="lower-message__content">
+                  ${ message.text }
+                </p>
+              </div>
+            </div>`;
+    }
+
     return html;
   }
 
