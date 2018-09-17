@@ -10,6 +10,11 @@ $(function(){
     search_list.append(html);
   }
 
+  function  appendNoUser(user){
+    var html = `<p class="chat-group-user__name">${user}</p>`
+    search_list.append(html);
+  }
+
   $("#user-search-field").on("keyup",function(){
     var input = $("#user-search-field").val();
     $.ajax({
@@ -23,10 +28,12 @@ $(function(){
         users.forEach(function(user){
           appendUser(user);
     })else{
-          alert("一致する名前がありません")
+          appendNoUser("一致する名前がありません")
         }
     .fail(function(){
       alert('ユーザー検索に失敗しました');
     })
   });
 });
+
+
