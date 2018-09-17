@@ -10,7 +10,8 @@
         %ul.left-header__members
           Member:
           %li.member
-            = current_user.name
+            - @users.each do |user|
+              = user.name
       .right-header
         .right-header__button
           = link_to "Edit", edit_group_path(@group), class: 'edit'
