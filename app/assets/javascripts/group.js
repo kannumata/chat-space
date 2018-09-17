@@ -18,23 +18,25 @@ $(function(){
   }
 
   $("#user-search-field").on("keyup",function(){
-    var input = $("#user-search-field").val();
-    $.ajax({
-      type: 'GET',
-      url: '/user/index',
-      data: { keyword: input },
-      dataType: 'json'
-    })
-    .done(function(users){
-      if (users.length !== 0) {
-        users.forEach(function(user){
-          appendUser(user);
-      search_list.append(html);
-    })else{
-          appendNoUser("一致する名前がありません")
-        }
-    .fail(function(){
-      alert('ユーザー検索に失敗しました');
+    var input = $(this).val();
+      $.ajax({
+        type: 'GET',
+        url: '/user/index',
+        data: { keyword: input },
+        dataType: 'json'
+      })
+      .done(function(users){
+        $("#user-search-result").empty();
+        if (users.length !== 0) {
+          users.forEach(function(user){
+            appendUser(user);
+        search_list.append(html);
+        })else{
+            appendNoUser("一致する名前がありません")
+          }
+      .fail(function(){
+        alert('ユーザー検索に失敗しました');
+    }
     })
   });
 });
