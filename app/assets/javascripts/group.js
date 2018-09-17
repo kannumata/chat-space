@@ -8,11 +8,13 @@ $(function(){
                   <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id=${user.data}data-user-name=${user.name}>追加</a>
                 </div>`
     search_list.append(html);
+    return html;
   }
 
   function  appendNoUser(user){
     var html = `<p class="chat-group-user__name">${user}</p>`
     search_list.append(html);
+    return html;
   }
 
   $("#user-search-field").on("keyup",function(){
@@ -27,6 +29,7 @@ $(function(){
       if (users.length !== 0) {
         users.forEach(function(user){
           appendUser(user);
+      search_list.append(html);
     })else{
           appendNoUser("一致する名前がありません")
         }
