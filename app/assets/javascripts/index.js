@@ -20,6 +20,7 @@ $(function(){
                   <p class='chat-group-user__name'>${ user_name }</p>
                   <a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</a>
                 </div>`
+    $('#chat-group-users').append(html);
   }
 
   $("#user-search-field").on("keyup",function(){
@@ -46,11 +47,11 @@ $(function(){
       alert('ユーザーの検索に失敗しました');
     })
   });
-  $("#user-search-field").on("click", "user-search-add", function(){
-    // var user_id =
-    // var user_name =
+  $("#user-search-result").on("click", ".user-search-add", function(){
+    var user_id = $(this).attr('data-user-id');
+    var user_name = $(this).attr('data-user-name');
     appendUsertoGroup(user_id, user_name);
-  } )
+    $(this).parent().remove();
+    $('#user-search-field').val('')
+  })
 });
-
-
