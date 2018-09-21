@@ -1,37 +1,34 @@
-.chat-group-form
-  %h1 新規チャットグループ
-  = form_for @group do |f|
-    - if @group.errors.any?
-      .chat-group-form__errors
-        %h2= "#{@group.errors.full_messages.count}件のエラーが発生しました。"
-        %ul
-          - @group.errors.full_messages.each do |message|
-            %li= message
-    .chat-group-form__field
-      .chat-group-form__field--left
-        = f.label :グループ名, class: 'chat-group-form__label'
-      .chat-group-form__field--right
-        = f.text_field :name, class: 'chat__group_name chat-group-form__input', placeholder: 'グループ名を入力してください'
-    .chat-group-form__field
-      .chat-group-form__field--left
-        = f.label :チャットメンバーを追加, class: "chat-group-form__label"
-      .chat-group-form__field--right
-        .chat-group-form__search.clearfix
-          %input#user-search-field.chat-group-form__input{placeholder: "追加したいユーザー名を入力してください", type: "text", autocomplete: "off"}
+= form_for @group do |f|
+  - if @group.errors.any?
+    .chat-group-form__errors
+      %h2= "#{@group.errors.full_messages.count}件のエラーが発生しました。"
+      %ul
+        - @group.errors.full_messages.each do |message|
+          %li= message
+  .chat-group-form__field
+    .chat-group-form__field--left
+      = f.label :グループ名, class: 'chat-group-form__label'
+    .chat-group-form__field--right
+      = f.text_field :name, class: 'chat__group_name chat-group-form__input', placeholder: 'グループ名を入力してください'
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+      = f.label :チャットメンバーを追加, class: 'chat-group-form__label'
+    .chat-group-form__field--right
+      .chat-group-form__search
+        %input#user-search-field.chat-group-form__input{placeholder: '追加したいユーザー名を入力してください', type: 'text', autocomplete: "off"}
         #user-search-result
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+      = f.label :チャットメンバー, class: 'chat-group-form__label'
+    .chat-group-form__field--right
+      #chat-group-users
+        - @group.users.each do |user|
+          .chat-group-user.clearfix#chat-group-user
+            = f.hidden_field :user_ids, value: current_user.id, multiple: true
+            %p.chat-group-user__name
+              = user.name
 
-    .chat-group-form__field.clearfix
-      .chat-group-form__field--left
-        = f.label :チャットメンバー, class: "chat-group-form__label"
-      .chat-group-form__field--right
-        #chat-group-users
-          - @group.users.each do |user|
-            .chat-group-user.clearfix
-              = f.hidden_field :user_id, value: current_user.id, multiple: true
-              %p.chat-group-user__name
-                = user.name
-
-    .chat-group-form__field.clearfix
-      .chat-group-form__field--left
-      .chat-group-form__field--right
-        = f.submit class: 'chat-group-form__action-btn'
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+    .chat-group-form__field--right
+      = f.submit class: 'chat-group-form__action-btn'

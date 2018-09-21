@@ -61,7 +61,7 @@
       border: none;
       float: left;
       height: 50px;
-      width: calc(100% - 150px);
+      width: calc(100%);
       position: relative;
       padding-left: 10px;
     }
@@ -69,9 +69,9 @@
       background-color: $white;
       float: left;
       height: 50px;
-      padding-right: 10px;
+      padding-right: 0px;
       position: absolute;
-      right: 200px;
+      right: 40px;
       &__image {
         font-size: 20px;
         line-height: 50px;
