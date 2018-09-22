@@ -14,7 +14,7 @@
 }
 .chat-group-form {
   width: 980px;
-  margin: 60px auto;
+  margin: 100px auto;
   padding: 40px;
   background-color: #fff;
   border: 1px solid #ddd;
@@ -56,6 +56,7 @@
 
   .chat-group-form__field {
     margin-top: 30px;
+    position: relative;
     &:after {
       content: "";
       clear: both;
@@ -117,6 +118,7 @@
 
       &.chat-group-user__btn--remove {
         color: #f05050;
+        float: right;
       }
     }
   }
@@ -128,4 +130,13 @@
     background-color: #38aef0;
     border: 0;
   }
+  .js-chat-member{
+  height: 60px;
+  }
+
+  .js-remove-btn{
+    position: absolute;
+    right: 10px;
+  }
+
 }

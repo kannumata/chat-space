@@ -8,12 +8,13 @@
         .left-header__title
           = @group.name
         %ul.left-header__members
-          Member:
+          Members:
           %li.member
-            = current_user.name
+            - @group.users.each do |user|
+              = user.name
       .right-header
         .right-header__button
-          = link_to "Edit", edit_group_path(@group), class: 'edit'
+          = link_to 'Edit', edit_group_path(@group), class: 'edit'
     .messages
       = render partial: 'message', collection: @messages
     .form
@@ -23,4 +24,4 @@
           = f.label :image, class: 'form__mask__image' do
             = fa_icon 'picture-o', class: 'icon'
             = f.file_field :image, class: 'hidden'
-        = f.submit 'Send', class: 'form__submit'
+          = f.submit 'Send', class: 'form__submit'
