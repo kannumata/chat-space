@@ -49,4 +49,21 @@ $(function(){
       alert('error');
     });
   });
+  $(function(){
+    setInterval(update, 5000)
+  });
+
+  function update(){
+    if(location.href.match(/\/groups\/\d+\/messages/))
+    $.ajax({
+      type: "GET",
+      url: location.herf.json,
+      dataType: "json",
+    })
+    .done(function(messages){
+    })
+    .fail(function(messages){
+    })
+  };
 });
+
