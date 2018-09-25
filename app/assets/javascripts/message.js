@@ -12,7 +12,7 @@ $(function(){
                         ${ message.name }
                       </div>
                       <div class='upper-message__date'>
-                        ${ message.data }
+                        ${ message.date }
                       </div>
                     </div>
                     <div class='lower-meesage'>
@@ -47,23 +47,32 @@ $(function(){
     })
     .fail(function(){
       alert('error');
-    });
+    })
   });
-  $(function(){
-    setInterval(update, 5000)
-  });
-
-  function update(){
-    if(location.href.match(/\/groups\/\d+\/messages/))
-    $.ajax({
-      type: "GET",
-      url: location.herf.json,
-      dataType: "json",
-    })
-    .done(function(messages){
-    })
-    .fail(function(messages){
-    })
-  };
+  setInterval(function(){
+    if (location.href.match(/\/groups\/\d+\/messages/)){
+      var message_id = $('.message').last().data('message-id')
+      console.log("成功");
+      $.ajax({
+        type: 'GET',
+        url: location.href,
+        data: message_id,
+        dataType: 'json'
+      })
+      .done(function(messages){
+        messages.forEach(function(message){
+        var html = buildHTML(message);
+        $('.messages').append(html);
+        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight
+        });
+        })
+        console.log("自動更新成功です");
+      })
+      .fail(function(message){
+        alert("自動更新に失敗しました");
+      })
+    }
+  }, 5000);
 });
+
 
