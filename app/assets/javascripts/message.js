@@ -25,6 +25,10 @@ $(function(){
     return html;
   }
 
+  function Scroll(){
+    $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
+  }
+
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -39,11 +43,10 @@ $(function(){
     })
     .done(function(data){
       var html = buildHTML(data);
-      $('.messages').append(html);
       $('#new_message')[0].reset();
       $('.form__submit').prop('disabled', false);
-      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight
-      });
+      $('.messages').append(html);
+      Scroll()
     })
     .fail(function(){
       alert('error');
@@ -63,10 +66,9 @@ $(function(){
         if(message.id > message_id){
           var html = buildHTML(message);
           $('.messages').append(html);
-          $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
+          Scroll()
         }
         })
-        console.log("自動更新成功です");
       })
       .fail(function(message){
         alert("自動更新に失敗しました");
