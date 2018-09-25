@@ -61,10 +61,11 @@ $(function(){
       })
       .done(function(messages){
         messages.forEach(function(message){
-        var html = buildHTML(message);
-        $('.messages').append(html);
-        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight
-        });
+        if(message.id > message_id){
+          var html = buildHTML(message);
+          $('.messages').append(html);
+          $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
+        }
         })
         console.log("自動更新成功です");
       })
