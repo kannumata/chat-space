@@ -52,7 +52,6 @@ $(function(){
   setInterval(function(){
     if (location.href.match(/\/groups\/\d+\/messages/)){
       var message_id = $('.message').last().data('message-id')
-      console.log("成功");
       $.ajax({
         type: 'GET',
         url: location.href,
