@@ -8,7 +8,7 @@
         .left-header__title
           = @group.name
         %ul.left-header__members
-          Members:
+          Members:&nbsp;
           %li.member
             - @group.users.each do |user|
               = user.name
@@ -19,7 +19,7 @@
       = render partial: 'message', collection: @messages
     .form
       = form_for [@group, @message] do |f|
-        = f.text_field :body, class: 'form__message', placeholder: 'type a message'
+        = f.text_field :body, class: 'form__message', placeholder: 'type a message', autocomplete: "off"
         .form__mask
           = f.label :image, class: 'form__mask__image' do
             = fa_icon 'picture-o', class: 'icon'

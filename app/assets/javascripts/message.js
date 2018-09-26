@@ -12,7 +12,7 @@ $(function(){
                         ${ message.name }
                       </div>
                       <div class='upper-message__date'>
-                        ${ message.data }
+                        ${ message.date }
                       </div>
                     </div>
                     <div class='lower-meesage'>
@@ -23,6 +23,10 @@ $(function(){
                     </div>
                   </div>`;
     return html;
+  }
+
+  function Scroll(){
+    $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
   }
 
   $('#new_message').on('submit', function(e){
@@ -39,14 +43,37 @@ $(function(){
     })
     .done(function(data){
       var html = buildHTML(data);
-      $('.messages').append(html);
       $('#new_message')[0].reset();
       $('.form__submit').prop('disabled', false);
-      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight
-      });
+      $('.messages').append(html);
+      Scroll()
     })
     .fail(function(){
       alert('error');
-    });
+    })
   });
+  setInterval(function(){
+    if (location.href.match(/\/groups\/\d+\/messages/)){
+      var message_id = $('.message').last().data('message-id')
+      var data = {id: message_id}
+      $.ajax({
+        type: 'GET',
+        url: location.href,
+        data: data,
+        dataType: 'json'
+      })
+      .done(function(messages){
+        messages.forEach(function(message){
+        var html = buildHTML(message);
+        $('.messages').append(html);
+        Scroll()
+        })
+      })
+      .fail(function(message){
+        alert("自動更新に失敗しました");
+      })
+    }
+  }, 5000);
 });
+
+
