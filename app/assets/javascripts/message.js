@@ -55,19 +55,18 @@ $(function(){
   setInterval(function(){
     if (location.href.match(/\/groups\/\d+\/messages/)){
       var message_id = $('.message').last().data('message-id')
+      var data = {id: message_id}
       $.ajax({
         type: 'GET',
         url: location.href,
-        data: message_id,
+        data: data,
         dataType: 'json'
       })
       .done(function(messages){
         messages.forEach(function(message){
-        if(message.id > message_id){
-          var html = buildHTML(message);
-          $('.messages').append(html);
-          Scroll()
-        }
+        var html = buildHTML(message);
+        $('.messages').append(html);
+        Scroll()
         })
       })
       .fail(function(message){
