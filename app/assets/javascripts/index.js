@@ -52,7 +52,7 @@ $(function(){
     var user_name = $(this).attr('data-user-name');
     appendUsertoGroup(user_id, user_name);
     $(this).parent().remove();
-    $('#user-search-field').val('')
+    $('#user-search-field').val('');
   })
   $('#chat-group-users').on('click', '.user-search-remove', function() {
      $(this).parent().remove();
