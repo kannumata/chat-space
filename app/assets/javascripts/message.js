@@ -1,4 +1,5 @@
-$(function(){
+$(document).on('turbolinks:load', function() {
+
   function buildHTML(message){
     var Image = '';
 
@@ -74,6 +75,6 @@ $(function(){
       })
     }
   }, 5000);
+
+
 });
-
-
