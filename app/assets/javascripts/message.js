@@ -4,10 +4,10 @@ $(document).on('turbolinks:load', function() {
     var Image = '';
 
     if ( message.image ){
-      Image = `<img src = "${ message.image }", class="lower-message__image">`
+      Image = `<img src = "${ message.image.url }", class="lower-message__image">`
     };
 
-      var html = `<div class='message' data-message_id="${message.id}">
+      var html = `<div class='message' message_id="${message.id}">
                     <div class='upper-message'>
                       <div class='upper-message__user-name'>
                         ${ message.name }
@@ -34,6 +34,7 @@ $(document).on('turbolinks:load', function() {
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action');
+    console.log(url);
     $.ajax({
       type: 'POST',
       url: url,
@@ -44,7 +45,7 @@ $(document).on('turbolinks:load', function() {
     })
     .done(function(data){
       var html = buildHTML(data);
-      $('#new_message')[0].reset();
+      $('.form__message').val("");
       $('.form__submit').prop('disabled', false);
       $('.messages').append(html);
       Scroll()
@@ -53,10 +54,12 @@ $(document).on('turbolinks:load', function() {
       alert('error');
     })
   });
-  setInterval(function(){
-    if (location.href.match(/\/groups\/\d+\/messages/)){
-      var message_id = $('.message').last().data('message-id')
-      var data = {id: message_id}
+
+    var group_id  = $('.left-header__title').attr('group_id');
+    setInterval(function(){
+      if (window.location.pathname == `/groups/${group_id}/messages`) {
+      var latest_id = $('.message').last().attr('message-id')
+      var data = {id: latest_id}
       $.ajax({
         type: 'GET',
         url: location.href,
@@ -70,7 +73,7 @@ $(document).on('turbolinks:load', function() {
         Scroll()
         })
       })
-      .fail(function(message){
+      .fail(function(){
         alert("自動更新に失敗しました");
       })
     }
